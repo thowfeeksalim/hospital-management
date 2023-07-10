@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .background-image {
+            background-image: url('https://kottayammedicalcollege.org/wp-content/themes/mck-bt1/assets/img/kmc_logo.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Adjust the opacity value as needed */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <title> DUTY ROSTER</title>
+</head>
+
+<body >
+    
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        
+        <nav class="nav bd-grid">
+            <div>
+                <h1>ABCD HOSPITAL | WELCOMES YOU</h1>
+            </div>
+            <div>
+              
+                <button onclick="addDuty()" class="add-duty-btn">Add Duty</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+     
+        <section class="about section" id="about" class="background-image">
+            <h2 class="section-title">ON DUTY</h2>
+            </section></main>
+            <div class="logo-container">
+                <img src="https://kottayammedicalcollege.org/wp-content/themes/mck-bt1/assets/img/kmc_logo.png" alt="Logo" class="logo">
+              </div>
+              <section>
+                <div class="duty-container">
+                    <div class="doctors-duty">
+                        <h3 style="color: rgb(223, 7, 140);">Doctors Available Now</h3>
+                        <div class="doctors-dutyy"
+                            <ul id="doctors-duty-list" class="text-center"></ul>
+                        </div>
+                    </div>
+                    <div class="nurses-duty">
+                        <h3 style=" color: rgb(223, 7, 140);">Nurse On Duty</h3>
+                        <div class="doctors-dutyy"
+                            <ul id="nurses-duty-list" class="text-center"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+        
+    
+
+          <section class="data">
+            <div class="scrolling-text">
+              <marquee behavior="scroll" direction="left">
+                <span class="pro-field">PRO for your service: John (Mobile: 9111098765)</span>
+              </marquee>
+            </div>
+          </section>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Example data for duty roster
+        var firstShiftDoctors = ["Dr. name", "Dr. name", "Dr. name"];
+        var secondShiftDoctors = ["Dr. name", "Dr. name", "Dr. name"];
+        var firstShiftNurses = ["Nurse 1", "Nurse 2", "Nurse 3"];
+        var secondShiftNurses = ["Nurse 4", "Nurse 5", "Nurse 6"];
+
+        // Function to display the duty roster for the first shift
+        function displayFirstShiftDuty() {
+            var doctorsDutyList = document.getElementById("doctors-duty-list");
+            doctorsDutyList.innerHTML = ""; // Clear the existing list
+
+            for (var i = 0; i < firstShiftDoctors.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.textContent = firstShiftDoctors[i];
+                doctorsDutyList.appendChild(listItem);
+            }
+
+            var nursesDutyList = document.getElementById("nurses-duty-list");
+            nursesDutyList.innerHTML = ""; // Clear the existing list
+
+            for (var i = 0; i < firstShiftNurses.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.textContent = firstShiftNurses[i];
+                nursesDutyList.appendChild(listItem);
+            }
+        }
+
+        // Function to display the duty roster for the second shift
+        function displaySecondShiftDuty() {
+            var doctorsDutyList = document.getElementById("doctors-duty-list");
+            doctorsDutyList.innerHTML = ""; // Clear the existing list
+
+            for (var i = 0; i < secondShiftDoctors.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.textContent = secondShiftDoctors[i];
+                doctorsDutyList.appendChild(listItem);
+            }
+
+            var nursesDutyList = document.getElementById("nurses-duty-list");
+            nursesDutyList.innerHTML = ""; // Clear the existing list
+
+            for (var i = 0; i < secondShiftNurses.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.textContent = secondShiftNurses[i];
+                nursesDutyList.appendChild(listItem);
+            }
+        }
+
+        // Function to update the doctors' names in the first shift
+        function updateFirstShiftDoctors(doctors) {
+            firstShiftDoctors = doctors;
+            checkAndUpdateDutyRoster();
+        }
+
+        // Function to update the doctors' names in the second shift
+        function updateSecondShiftDoctors(doctors) {
+            secondShiftDoctors = doctors;
+            checkAndUpdateDutyRoster();
+        }
+
+        // Function to update the nurses' names in the first shift
+        function updateFirstShiftNurses(nurses) {
+            firstShiftNurses = nurses;
+            checkAndUpdateDutyRoster();
+        }
+
+        // Function to update the nurses' names in the second shift
+        function updateSecondShiftNurses(nurses) {
+            secondShiftNurses = nurses;
+            checkAndUpdateDutyRoster();
+        }
+
+        // Function to prompt for duty details and update the duty roster
+        function addDuty() {
+            var firstShiftDoctorsInput = prompt("Enter doctors' names for the first shift (comma-separated):");
+            var secondShiftDoctorsInput = prompt("Enter doctors' names for the second shift (comma-separated):");
+            var firstShiftNursesInput = prompt("Enter nurses' names for the first shift (comma-separated):");
+            var secondShiftNursesInput = prompt("Enter nurses' names for the second shift (comma-separated):");
+
+            var firstShiftDoctorsArray = firstShiftDoctorsInput.split(",").map(doctor => doctor.trim());
+            var secondShiftDoctorsArray = secondShiftDoctorsInput.split(",").map(doctor => doctor.trim());
+            var firstShiftNursesArray = firstShiftNursesInput.split(",").map(nurse => nurse.trim());
+            var secondShiftNursesArray = secondShiftNursesInput.split(",").map(nurse => nurse.trim());
+
+            updateFirstShiftDoctors(firstShiftDoctorsArray);
+            updateSecondShiftDoctors(secondShiftDoctorsArray);
+            updateFirstShiftNurses(firstShiftNursesArray);
+            updateSecondShiftNurses(secondShiftNursesArray);
+        }
+
+        // Function to check and update the duty roster based on the current time
+        function checkAndUpdateDutyRoster() {
+            var currentTime = new Date();
+            var currentHour = currentTime.getHours();
+
+            if (currentHour < 14) {
+                // Before 2 PM, display first shift duty
+                displayFirstShiftDuty();
+            } else {
+                // After 2 PM, display second shift duty
+                displaySecondShiftDuty();
+            }
+
+            // Reset the scroll position to the top
+            var dutyContainer = document.querySelector(".duty-container");
+            dutyContainer.scrollTop = 0;
+            // Smoothly scroll to the top position
+            dutyContainer.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Initial duty roster display
+        checkAndUpdateDutyRoster();
+
+        // Update the duty roster every minute
+        setInterval(checkAndUpdateDutyRoster, 60000);
+    </script>
+</body>
+
+</html>
